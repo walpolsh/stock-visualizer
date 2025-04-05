@@ -4,11 +4,18 @@ namespace App\Infrastructure\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
 class StockEntity
 {
-    // TODO: Implement StockEntity
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
+
+    #[ORM\Column(type: 'string', length: 10)]
     private string $ticker = '';
+
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     private float $price = 0;
 
     public function __construct(string $ticker, float $price)
@@ -16,7 +23,7 @@ class StockEntity
         $this->ticker = $ticker;
         $this->price = $price;
     }
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
