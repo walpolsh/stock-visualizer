@@ -47,22 +47,4 @@ class StockEntity
     {
         $this->price = $price;
     }
-    public function __toString(): string
-    {
-        return sprintf('StockEntity{id=%d, ticker=%s, price=%.2f}', $this->id, $this->ticker, $this->price);
-    }
-    public function __serialize(): array
-    {
-        return [
-            'id' => $this->id,
-            'ticker' => $this->ticker,
-            'price' => $this->price,
-        ];
-    }
-    public function __unserialize(array $data): void
-    {
-        $this->id = $data['id'];
-        $this->ticker = $data['ticker'];
-        $this->price = $data['price'];
-    }
 }
